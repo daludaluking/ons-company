@@ -1,23 +1,56 @@
 package main
 
 import (
-	"github.com/daludaluking/ons-company/ons_pb2"
-	"github.com/daludaluking/ons-company/sawtooth_sdk/protobuf/batch_pb2"
-	"github.com/daludaluking/ons-company/sawtooth_sdk/protobuf/transaction_pb2"
-	"github.com/daludaluking/ons-company/sawtooth_sdk/signing"
-
-	"crypto/sha512"
-	"encoding/hex"
-//	"encoding/json"
-
-	"strings"
-//	"net/http"
-//	"bytes"
 	"log"
-//	"fmt"
+	"fmt"
 	"time"
 	"strconv"
+	"strings"
+	"bytes"
+	"crypto/sha512"
+	"encoding/hex"
+	"io/ioutil"
+	"net/http"
 	"github.com/golang/protobuf/proto"
+	"github.com/daludaluking/ons-company/ons_pb2"
+	"github.com/daludaluking/sawtooth-sdk/protobuf/batch_pb2"
+	"github.com/daludaluking/sawtooth-sdk/protobuf/transaction_pb2"
+	"github.com/daludaluking/sawtooth-sdk/signing"
+)
+
+var namespace = hexdigestbyString("ons")[:6]
+
+const PARAM_GS1CODE = "gs1code"
+const PARAM_ADDRESS = "address"
+
+const action_register = "reg"
+const action_deregister = "dereg"
+const action_add = "add_rec"
+const action_remove = "rm_rec"
+const action_register_svc = "reg_svc"
+const action_deregister_svc = "dereg_svc"
+const action_change_gstate = "chx_gstate"
+const action_change_rstate = "chx_rstate"
+const action_add_mngr = "add_mngr"
+const action_remove_mngr = "rm_mngr"
+const action_add_sumngr = "add_sumngr"
+const action_remove_sumngr = "rm_sumngr"
+const action_op_sumngr = "op_mngr"
+
+const (
+	REGISTER_GS1CODE       = 0
+	DEREGISTER_GS1CODE     = 1
+	ADD_RECORD             = 2
+	REMOVE_RECORD          = 3
+	REGISTER_SERVICETYPE   = 4
+	DEREGISTER_SERVICETYPE = 5
+	CHANGE_GS1CODE_STATE   = 6
+	CHANGE_RECORD_STATE    = 7
+	ADD_MANAGER            = 8
+	REMOVE_MANAGER         = 9
+	ADD_SUMANAGER          = 10
+	REMOVE_SUMANAGER       = 11
+	OP_MANAGER             = 12
 )
 
 type ONSClient struct {
@@ -49,20 +82,21 @@ func NewONSTransactionHalder(privateKey []byte) *ONSClient {
 	return iONSHandler
 }
 
-/*
-func ProcessRegisterGS1Code(h *ONSTransactionHalder, gs1Code string) error {
+func MakeTransactionPayload(trType int32, params map[string]interface{}) (*ons_pb2.SendONSTransactionPayload, error){
+	transaction_payload := &ons_pb2.SendONSTransactionPayload {}
 
-}
-*/
-func MakeRegisterGS1CodePayload(h *ONSClient, gs1Code string) (*ons_pb2.SendONSTransactionPayload, error) {
-	register_gs1_code_payload := &ons_pb2.SendONSTransactionPayload{
-		TransactionType: ons_pb2.SendONSTransactionPayload_REGISTER_GS1CODE,
-		RegisterGs1Code: &ons_pb2.SendONSTransactionPayload_RegisterGS1CodeTransactionData{
-			Gs1Code: gs1Code,
-			OwnerId: h.Signer.GetPublicKey().AsHex(),
-		},
+	switch trType {
+	case REGISTER_GS1CODE:
+		transaction_payload.TransactionType = ons_pb2.SendONSTransactionPayload_REGISTER_GS1CODE
+		transaction_payload.RegisterGs1Code = &ons_pb2.SendONSTransactionPayload_RegisterGS1CodeTransactionData {
+			Gs1Code: params[PARAM_GS1CODE].(string),
+			OwnerId: params[PARAM_ADDRESS].(string),
+		}
+	default:
+		return nil, fmt.Errorf("MakeTransactionPayload : invalid transaction type %v", trType)
 	}
-	return register_gs1_code_payload, nil
+
+	return transaction_payload, nil
 }
 
 func MakeBatchList(transaction_payload *ons_pb2.SendONSTransactionPayload, signer *signing.Signer, address string) ([]byte, error) {
@@ -121,9 +155,46 @@ func MakeBatchList(transaction_payload *ons_pb2.SendONSTransactionPayload, signe
 	return proto.Marshal(batch_list)
 }
 
+func SendTransactions(ons *ONSClient, batches[]byte) ([]byte, error) {
+
+	resp, err:= http.Post("http://198.13.60.39:8080"+"/batches", "application/octet-stream", bytes.NewBuffer(batches))
+	if err != nil {
+		log.Printf("Failed to send batch list: %v", err)
+		return nil, err;
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	log.Printf("SendTransactions: %#v", resp)
+	log.Printf("SendTransactions: %#v", string(body))
+	return body, err
+}
+
+func hexdigestbyString(str string) string {
+	hash := sha512.New()
+	hash.Write([]byte(str))
+	hashBytes := hash.Sum(nil)
+	return strings.ToLower(hex.EncodeToString(hashBytes))
+}
+
 func hexdigestbyByte(data []byte) string {
 	hash := sha512.New()
 	hash.Write(data)
 	hashBytes := hash.Sum(nil)
 	return strings.ToLower(hex.EncodeToString(hashBytes))
+}
+
+func MakeAddressByGS1Code(gs1_code string) string{
+	return namespace + hexdigestbyString("gs1")[:8] + hexdigestbyString(gs1_code)[:56]
+}
+
+func GetONSManagerAddress() string {
+	return namespace + hexdigestbyString("ons_manager")[:64]
+}
+
+func MakeAddressByServiceType(requestor string, service_type *ons_pb2.ServiceType) (string, error) {
+	marshaled_service_type, err := proto.Marshal(service_type)
+	if err != nil {
+		return "", err
+	}
+	return namespace + hexdigestbyString("service-type")[:8] + hexdigestbyString(requestor)[:16] + hexdigestbyByte(marshaled_service_type)[:40], nil
 }

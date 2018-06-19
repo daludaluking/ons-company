@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
 	"os"
-	//"github.com/gorilla/websocket"
+	"net/http"
+	"encoding/hex"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
@@ -28,7 +28,8 @@ func main() {
 	*/
 	//일단 private key를 hard coding 해 놓자.
 	//차후에 받는걸로...
-	onsTransactionHalder = NewONSTransactionHalder([]byte("ad661cc1acff767e4148ebf74a080a8f54c13abde64062c5cd73d65863e4dd6a"))
+	private_key, _ := hex.DecodeString("ad661cc1acff767e4148ebf74a080a8f54c13abde64062c5cd73d65863e4dd6a")
+	onsTransactionHalder = NewONSTransactionHalder(private_key)
 	registerHandlers()
 	log.Printf("Start ons-company : http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
