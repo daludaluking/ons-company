@@ -38,6 +38,12 @@ const action_remove_sumngr = "rm_sumngr"
 const action_op_sumngr = "op_mngr"
 
 const (
+	NONE = iota
+	GS1_CODE
+	SERVICE_TYPE
+)
+
+const (
 	REGISTER_GS1CODE       = 0
 	DEREGISTER_GS1CODE     = 1
 	ADD_RECORD             = 2
@@ -197,4 +203,21 @@ func MakeAddressByServiceType(requestor string, service_type *ons_pb2.ServiceTyp
 		return "", err
 	}
 	return namespace + hexdigestbyString("service-type")[:8] + hexdigestbyString(requestor)[:16] + hexdigestbyByte(marshaled_service_type)[:40], nil
+}
+
+func GetDataTypeByAddress(address string) int{
+	namespace := hexdigestbyString("ons")[:6]
+
+	target_address := namespace + hexdigestbyString("gs1")[:8]
+	log.Printf("GetTableIdxByAddress : %s : %s\n", address, target_address)
+	if address[:14] == target_address {
+		return GS1_CODE
+	}
+
+	target_address = namespace + hexdigestbyString("service-type")[:8]
+	log.Printf("GetTableIdxByAddress : %s : %s\n", address, target_address)
+	if address[:14] == target_address {
+		return SERVICE_TYPE
+	}
+	return NONE
 }

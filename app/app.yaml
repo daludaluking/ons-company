@@ -1,4 +1,4 @@
-runtime: go
+runtime: custom
 env: flex
 
 # This sample incurs costs to run on the App Engine flexible environment.
@@ -11,3 +11,8 @@ resources:
   cpu: 1
   memory_gb: 0.5
   disk_size_gb: 10
+
+#[START env_variables]
+env_variables:
+  GCLOUD_DATASET_ID: ons-company
+#[END env_variables]

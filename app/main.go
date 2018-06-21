@@ -8,9 +8,12 @@ import (
 	"encoding/hex"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	//"cloud.google.com/go/datastore"
+	//"golang.org/x/net/context"
 )
 
 var onsTransactionHalder *ONSClient
+//var datastoreClient *datastore.Client
 
 func main() {
 	/*
@@ -26,13 +29,44 @@ func main() {
 	   }
 	       conn.WriteMessage(websocket.TextMessage, []byte("Connect"))
 	*/
+	/*
+	ctx := context.Background()
+	projectID := os.Getenv("GCLOUD_DATASET_ID")
+	var err error
+	log.Printf("%v\n", projectID)
+	datastoreClient, err = datastore.NewClient(ctx, projectID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	*/
 	//일단 private key를 hard coding 해 놓자.
 	//차후에 받는걸로...
 	private_key, _ := hex.DecodeString("ad661cc1acff767e4148ebf74a080a8f54c13abde64062c5cd73d65863e4dd6a")
 	onsTransactionHalder = NewONSTransactionHalder(private_key)
+	evHandler, err := NewONSEventHandler("198.13.60.39:8080", "/subscriptions", nil, true)
+	if err != nil {
+		log.Printf("Failed to create ons event handler : ", err)
+	}
+
+	if evHandler.Run() == false {
+		log.Printf("Failed to run ons event handler")
+		os.Exit(2)
+	}
+
+	evHandler.Subscribe(true)
 	registerHandlers()
+
 	log.Printf("Start ons-company : http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	err = http.ListenAndServe(":8080", nil)
+
+	evHandler.Subscribe(false)
+	evHandler.Terminate(true)
+
+	if err != nil {
+		log.Printf("Exit ons-company : %v", err)
+	}
+
+
 }
 
 func registerHandlers() {
