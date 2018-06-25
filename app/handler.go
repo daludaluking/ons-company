@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"encoding/json"
 )
 
 type adminHandler func(*ONSClient, http.ResponseWriter, *http.Request) error
@@ -71,7 +70,7 @@ func actionRegisterHandler(h *ONSClient, w http.ResponseWriter, r *http.Request)
 	payload, err := MakeTransactionPayload(REGISTER_GS1CODE, params)
 	if err != nil {
 		log.Printf("actionRegisterHandler :Failed to call MakeTransactionPayload")
-		writeResponse("actionRegisterHandler", err, w)
+		WriteResponse("actionRegisterHandler", err, w)
 		return err
 	}
 
@@ -79,34 +78,18 @@ func actionRegisterHandler(h *ONSClient, w http.ResponseWriter, r *http.Request)
 	batch_list_bytes, err := MakeBatchList(payload, h.GetSigner(), address)
 	if err != nil {
 		log.Printf("actionRegisterHandler :Failed to call MakeBatchList")
-		writeResponse("actionRegisterHandler", err, w)
+		WriteResponse("actionRegisterHandler", err, w)
 		return err
 	}
 
 	result, err := SendTransactions(h, batch_list_bytes)
 	if err != nil {
 		log.Printf("actionRegisterHandler :Failed to call SendTransactions")
-		writeResponse("actionRegisterHandler", err, w)
+		WriteResponse("actionRegisterHandler", err, w)
 		return err
 	}
 
-	err = writeResponseJson("actionRegisterHandler", string(result), w)
+	err = WriteResponseJson("actionRegisterHandler", string(result), w)
 	return err
 }
 
-func writeResponseJson(caller string, result string, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	fmt.Fprintf(w, result)
-	return nil
-}
-
-func writeResponse(caller string, result interface{}, w http.ResponseWriter) error {
-	response, err := json.MarshalIndent(result, "", "  ")
-	if err != nil {
-		fmt.Fprintf(w, "%s : cannot marshal data into json", caller)
-		return err
-	}
-	w.Header().Set("Content-Type", "application/json")
-	fmt.Fprintf(w, string(response))
-	return nil
-}

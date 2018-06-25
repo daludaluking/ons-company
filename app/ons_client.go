@@ -12,10 +12,10 @@ import (
 	"io/ioutil"
 	"net/http"
 	"github.com/golang/protobuf/proto"
-	"github.com/daludaluking/ons-company/ons_pb2"
-	"github.com/daludaluking/sawtooth-sdk/protobuf/batch_pb2"
-	"github.com/daludaluking/sawtooth-sdk/protobuf/transaction_pb2"
-	"github.com/daludaluking/sawtooth-sdk/signing"
+	"github.com/daludaluking/ons-sawtooth-sdk/ons_pb2"
+	"github.com/daludaluking/ons-sawtooth-sdk/protobuf/batch_pb2"
+	"github.com/daludaluking/ons-sawtooth-sdk/protobuf/transaction_pb2"
+	"github.com/daludaluking/ons-sawtooth-sdk/signing"
 )
 
 var namespace = hexdigestbyString("ons")[:6]
@@ -61,6 +61,8 @@ const (
 
 type ONSClient struct {
 	Signer *signing.Signer
+	Address string
+	Port string
 }
 
 var iONSHandler *ONSClient = nil
@@ -78,10 +80,12 @@ func MakeSigner(priv_key []byte) *signing.Signer {
 	return signer
 }
 
-func NewONSTransactionHalder(privateKey []byte) *ONSClient {
+func NewONSTransactionHalder(address string, port string, privateKey []byte) *ONSClient {
 	if iONSHandler == nil {
 		iONSHandler = &ONSClient{
 			Signer: MakeSigner(privateKey),
+			Address: address,
+			Port: port,
 		}
 	}
 
@@ -163,7 +167,7 @@ func MakeBatchList(transaction_payload *ons_pb2.SendONSTransactionPayload, signe
 
 func SendTransactions(ons *ONSClient, batches[]byte) ([]byte, error) {
 
-	resp, err:= http.Post("http://198.13.60.39:8080"+"/batches", "application/octet-stream", bytes.NewBuffer(batches))
+	resp, err:= http.Post("http://"+ons.Address+":"+ons.Port+"/batches", "application/octet-stream", bytes.NewBuffer(batches))
 	if err != nil {
 		log.Printf("Failed to send batch list: %v", err)
 		return nil, err;

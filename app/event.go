@@ -9,7 +9,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"encoding/base64"
-	"github.com/daludaluking/ons-company/ons_pb2"
+	"github.com/daludaluking/ons-sawtooth-sdk/ons_pb2"
 	"github.com/golang/protobuf/proto"
 	"github.com/gorilla/websocket"
 )

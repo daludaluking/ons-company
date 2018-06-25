@@ -1,0 +1,1000 @@
+ 1297  go build -o ./bin/sawtooth_ons_test 
+ 1298  ./bin/sawtooth_ons_test register_svc -t
+ 1299  go build -o ./bin/sawtooth_ons_test 
+ 1300  ./bin/sawtooth_ons_test register_svc -t
+ 1301  go build -o ./bin/sawtooth_ons_test 
+ 1302  ./bin/sawtooth_ons_test register_svc -t
+ 1303  go build -o ./bin/sawtooth_ons_test 
+ 1304  ./bin/sawtooth_ons_test register_svc -t
+ 1305  go build -o ./bin/sawtooth_ons_test 
+ 1306  ./bin/sawtooth_ons_test register_svc -t
+ 1307  go build -o ./bin/sawtooth_ons_test 
+ 1308  ./bin/sawtooth_ons_test register_svc -t
+ 1309  go build -o ./bin/sawtooth_ons_test 
+ 1310  ./bin/sawtooth_ons_test register_svc -t
+ 1311  go build -o ./bin/sawtooth_ons_test 
+ 1312  ./bin/sawtooth_ons_test register_svc -t
+ 1313  go build -o ./bin/sawtooth_ons_test 
+ 1314  ./bin/sawtooth_ons_test register_svc -t
+ 1315  go build -o ./bin/sawtooth_ons_test 
+ 1316  ./bin/sawtooth_ons_test register_svc -t
+ 1317  go build -o ./bin/sawtooth_ons_test 
+ 1318  ./bin/sawtooth_ons_test register_svc -t
+ 1319  go build -o ./bin/sawtooth_ons_test 
+ 1320  ./bin/sawtooth_ons_test register_svc -t
+ 1321  go build -o ./bin/sawtooth_ons_test 
+ 1322  ./bin/sawtooth_ons_test register_svc -t
+ 1323  go build -o ./bin/sawtooth_ons_test 
+ 1324  ./bin/sawtooth_ons_test register_svc -t
+ 1325  go build -o ./bin/sawtooth_ons_test 
+ 1326  ./bin/sawtooth_ons_test register_svc -t
+ 1327  go build -o ./bin/sawtooth_ons_test 
+ 1328  ./bin/sawtooth_ons_test register_svc -t
+ 1329  go build -o ./bin/sawtooth_ons_test 
+ 1330  ./bin/sawtooth_ons_test register_svc -t
+ 1331  go build -o ./bin/sawtooth_ons_test 
+ 1332  ./bin/sawtooth_ons_test register_svc -t
+ 1333  go build -o ./bin/sawtooth_ons_test 
+ 1334  ./bin/sawtooth_ons_test register_svc -t
+ 1335  go build -o ./bin/sawtooth_ons_test 
+ 1336  ./bin/sawtooth_ons_test register_svc -t
+ 1337  go build -o ./bin/sawtooth_ons_test 
+ 1338  ./bin/sawtooth_ons_test register_svc -t
+ 1339  go build -o ./bin/sawtooth_ons_test 
+ 1340  ./bin/sawtooth_ons_test register_svc -t
+ 1341  go build -o ./bin/sawtooth_ons_test 
+ 1342  ./bin/sawtooth_ons_test register_svc -t
+ 1343  go build -o ./bin/sawtooth_ons_test 
+ 1344  ./bin/sawtooth_ons_test register_svc -t
+ 1345  go build -o ./bin/sawtooth_ons_test 
+ 1346  ./bin/sawtooth_ons_test register_svc -t
+ 1347  go build -o ./bin/sawtooth_ons_test 
+ 1348  ./bin/sawtooth_ons_test register_svc -t
+ 1349  go build -o ./bin/sawtooth_ons_test 
+ 1350  ./bin/sawtooth_ons_test register_svc -t
+ 1351  go build -o ./bin/sawtooth_ons_test 
+ 1352  ./bin/sawtooth_ons_test register_svc -t
+ 1353  go build -o ./bin/sawtooth_ons_test 
+ 1354  ./bin/sawtooth_ons_test register_svc -t
+ 1355  go build -o ./bin/sawtooth_ons_test 
+ 1356  ./bin/sawtooth_ons_test register_svc -t
+ 1357  go build -o ./bin/sawtooth_ons_test 
+ 1358  ./bin/sawtooth_ons_test register_svc -t
+ 1359  go build -o ./bin/sawtooth_ons_test 
+ 1360  ./bin/sawtooth_ons_test register_svc -t
+ 1361  go build -o ./bin/sawtooth_ons_test 
+ 1362  ./bin/sawtooth_ons_test register_svc -t
+ 1363  go build -o ./bin/sawtooth_ons_test 
+ 1364  ./bin/sawtooth_ons_test register_svc -t
+ 1365  go build -o ./bin/sawtooth_ons_test 
+ 1366  ./bin/sawtooth_ons_test register_svc -t
+ 1367  go build -o ./bin/sawtooth_ons_test 
+ 1368  ./bin/sawtooth_ons_test register_svc -t
+ 1369  go build -o ./bin/sawtooth_ons_test 
+ 1370  ./bin/sawtooth_ons_test register_svc -t
+ 1371  go build -o ./bin/sawtooth_ons_test 
+ 1372  ./bin/sawtooth_ons_test register_svc -t
+ 1373  go build -o ./bin/sawtooth_ons_test 
+ 1374  ./bin/sawtooth_ons_test register_svc -t
+ 1375  go build -o ./bin/sawtooth_ons_test 
+ 1376  ./bin/sawtooth_ons_test register_svc -t
+ 1377  go build -o ./bin/sawtooth_ons_test 
+ 1378  ./bin/sawtooth_ons_test register_svc -t
+ 1379  ./bin/sawtooth_ons_test register_svc -t -x ./servicetype.json 
+ 1380  go build -o ./bin/sawtooth_ons_test 
+ 1381  ./bin/sawtooth_ons_test register_svc -t -x ./servicetype.json 
+ 1382  go build -o ./bin/sawtooth_ons_test 
+ 1383  ./bin/sawtooth_ons_test register_svc -t -x ./servicetype.json 
+ 1384  go build -o ./bin/sawtooth_ons_test 
+ 1385  ./bin/sawtooth_ons_test register_svc -t -x ./servicetype.json 
+ 1386  go build -o ./bin/sawtooth_ons_test 
+ 1387  cd ..
+ 1388  cd protos/
+ 1389  protoc --go_out=../src/protobuf/ons_pb2 ons.proto 
+ 1390  cd ..
+ 1391  history > command.history.txt
+ 1392  cs src/sawtooth_ons/
+ 1393  cd src/sawtooth_ons/
+ 1394  go build -o ./bin/sawtooth_ons
+ 1395  cd ..
+ 1396  cd test
+ 1397  go build -o ./bin/sawtooth_ons_test 
+ 1398  ./bin/sawtooth_ons_test register_svc -t -x ./servicetype.json
+ 1399  go build -o ./bin/sawtooth_ons_test 
+ 1400  ./bin/sawtooth_ons_test register_svc -t -x ./servicetype.json
+ 1401  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json
+ 1402  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -v
+ 1403  ./bin/sawtooth_ons_test register -g 00800000000002
+ 1404  ./bin/sawtooth_ons_test register -g 00800000000003
+ 1405  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -vv
+ 1406  ./bin/sawtooth_ons_test register -g 00800000000003
+ 1407  ./bin/sawtooth_ons_test register -g 00800000000004
+ 1408  ./bin/sawtooth_ons_test register -g 00800000000005
+ 1409  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -vv
+ 1410  ./bin/sawtooth_ons_test register -g 00800000000007
+ 1411  cd ..
+ 1412  cd protos/
+ 1413  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1414  cd ..
+ 1415  cd src/sawtooth_ons/
+ 1416  go build -o ./bin/sawtooth_ons
+ 1417  cd ..
+ 1418  cd test
+ 1419  go build -o ./bin/sawtooth_ons_test 
+ 1420  ./bin/sawtooth_ons_test register -g 00800000000008
+ 1421  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -vv
+ 1422  go build -o ./bin/sawtooth_ons_test 
+ 1423  cd ..
+ 1424  cd sawtooth_ons/
+ 1425  go build -o ./bin/sawtooth_ons
+ 1426  cd ..
+ 1427  cd test/
+ 1428  go build -o ./bin/sawtooth_ons_test 
+ 1429  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -vv
+ 1430  cd ..
+ 1431  cd sawtooth_ons/
+ 1432  go build -o ./bin/sawtooth_ons
+ 1433  cd ..
+ 1434  cd test/
+ 1435  go build -o ./bin/sawtooth_ons_test
+ 1436  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -vv
+ 1437  cd ..
+ 1438  cd src/sawtooth_ons/
+ 1439  go build -o ./bin/sawtooth_ons
+ 1440  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -vv
+ 1441  cd ..
+ 1442  cd stest
+ 1443  cd test/
+ 1444  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -vv
+ 1445  cd ..
+ 1446  cd sawtooth_ons/
+ 1447  go build -o ./bin/sawtooth_ons
+ 1448  cd ..
+ 1449  cd test/
+ 1450  ./bin/sawtooth_ons_test register_svc -x ./servicetype.json -vv
+ 1451  cd ..
+ 1452  cd sawtooth_ons/
+ 1453  go build -o ./bin/sawtooth_ons
+ 1454  cd ..
+ 1455  cd test
+ 1456  go build -o ./bin/sawtooth_ons_test
+ 1457  cd ..
+ 1458  cd sawtooth_ons/
+ 1459  go build -o ./bin/sawtooth_ons
+ 1460  cd ..
+ 1461  cd test/
+ 1462  go build -o ./bin/sawtooth_ons_test
+ 1463  cd ..
+ 1464  cd sawtooth_ons/
+ 1465  go build -o ./bin/sawtooth_ons_test
+ 1466  go build -o ./bin/sawtooth_ons
+ 1467  rm ./bin/sawtooth_ons_test 
+ 1468  cd 
+ 1469  cd go/projects/ons-sawtooth/src/
+ 1470  cd sawtooth_ons/
+ 1471  cat build 
+ 1472  export GOPATH=$HOME/go:$HOME/sawtooth/sawtooth-core/sdk/go:$HOME/go/projects/ons-sawtooth
+ 1473  cd ..
+ 1474  cd protos/
+ 1475  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1476  ll
+ 1477  chmod 755 -R *
+ 1478  ll
+ 1479  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1480  cd ..
+ 1481  cd src
+ 1482  ll
+ 1483  cd sawtooth_ons/
+ 1484  ll
+ 1485  go build -o ./bin/sawtooth_ons
+ 1486  chmod 755 -R *
+ 1487  go build -o ./bin/sawtooth_ons
+ 1488  cd ..
+ 1489  cd protos/
+ 1490  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1491  cd ..
+ 1492  cd src/
+ 1493  cd sawtooth_ons/
+ 1494  go build -o ./bin/sawtooth_ons
+ 1495  cd ..
+ 1496  cd test
+ 1497  go build -o ./bin/sawtooth_ons_test 
+ 1498  cd ..
+ 1499  cd sawtooth_ons/
+ 1500  go build -o ./bin/sawtooth_ons
+ 1501  gofmt -h
+ 1502  gofmt -d ./handler/handler.go 
+ 1503  git diff
+ 1504  go build -o ./bin/sawtooth_ons
+ 1505  cd ..
+ 1506  cd protos/
+ 1507  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1508  cd ..
+ 1509  cd src
+ 1510  cd sawtooth_ons/
+ 1511  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1512  go build -o ./bin/sawtooth_ons
+ 1513  cd ..
+ 1514  cd test/
+ 1515  go build -o ./bin/sawtooth_ons_test
+ 1516  cd ..
+ 1517  cd sawtooth_ons/
+ 1518  go build -o ./bin/sawtooth_ons_test
+ 1519  go build -o ./bin/sawtooth_ons
+ 1520  rm ./bin/sawtooth_ons_test
+ 1521  go build -o ./bin/sawtooth_ons
+ 1522  cd ..
+ 1523  cd test
+ 1524  go build -o ./bin/sawtooth_ons_test
+ 1525  git diff
+ 1526  cd
+ 1527  cd go/
+ 1528  cd projects/ons-sawtooth/src/test/
+ 1529  ll
+ 1530  cd bin/
+ 1531  ll
+ 1532  ./bin/sawtooth_ons_test register_svc -x ./servicetype.xml -vv
+ 1533  cd ..
+ 1534  ./bin/sawtooth_ons_test register_svc -x ./servicetype.xml -vv
+ 1535  cd ..
+ 1536  chmod 755 -R *
+ 1537  cd test
+ 1538  ./bin/sawtooth_ons_test register_svc -x ./servicetype.xml -vv
+ 1539  cat servicetype.xml
+ 1540  ./bin/sawtooth_ons_test register_svc -x ./servicetype.xml -vv
+ 1541  cd ..
+ 1542  cd sawtooth_ons/
+ 1543  cd ..
+ 1544  cd test
+ 1545  ./bin/sawtooth_ons_test register_svc -x ./servicetype.xml -vv
+ 1546  git diff
+ 1547  sawtooth state list --url http://198.13.60.39:8080
+ 1548  cat ~/.sawtooth/keys/indal.choi.pub
+ 1549  sawtooth state list --url http://198.13.60.39:8080
+ 1550  sawtooth state help
+ 1551  sawtooth state -h
+ 1552  sawtooth state list --url http://198.13.60.39:8080
+ 1553  cd
+ 1554  cd go
+ 1555  cd projects/
+ 1556  cd ons-sawtooth/
+ 1557  git status
+ 1558  cd src/
+ 1559  ll
+ 1560  cd ..
+ 1561  grep -irnH sawtooth_ons 
+ 1562  ll
+ 1563  cd src
+ 1564  mv sawtooth_ons/ ons
+ 1565  mkdir sync
+ 1566  cd ons/
+ 1567  ll
+ 1568  cd ..
+ 1569  chmod 755 -R *
+ 1570  git status
+ 1571  cd on
+ 1572  cd src
+ 1573  cd ons/
+ 1574  ll
+ 1575  cat build
+ 1576  ll
+ 1577  cd ..
+ 1578  cd sync/
+ 1579  ll
+ 1580  touch main.go
+ 1581  ll
+ 1582  cd ..
+ 1583  chmod 755 -R *
+ 1584  cd src
+ 1585  cd sync
+ 1586  ll
+ 1587  touch msg_handler.go
+ 1588  mv msg_handler.go handler.go
+ 1589  cd ..
+ 1590  mv sync ons_sync
+ 1591  cd ons
+ 1592  cat build 
+ 1593  export GOPATH=$HOME/go:$HOME/sawtooth/sawtooth-core/sdk/go:$HOME/go/projects/ons-sawtooth
+ 1594  cd ..
+ 1595  cd sy
+ 1596  cd ons_sync/
+ 1597  mkdir bin
+ 1598  chmod 755 * -R
+ 1599  go build -o ./bin/ons_sync
+ 1600  git stats
+ 1601  git status
+ 1602  cd ..
+ 1603  git status
+ 1604  chmod 755 -R *
+ 1605  git status
+ 1606  git add .
+ 1607  git commit -m "Implementing to sync ledger for ons db"
+ 1608  git push -u origin master
+ 1609  git log
+ 1610  cd
+ 1611  go get github.com/gorilla/websocket
+ 1612  cd
+ 1613  go get --help
+ 1614  go help get
+ 1615  cd go
+ 1616  cd src/
+ 1617  ll
+ 1618  cd ..
+ 1619  cd projects/
+ 1620  ls
+ 1621  cd ons-sawtooth/
+ 1622  ll
+ 1623  cd src
+ 1624  ls
+ 1625  cd sync
+ 1626  cd ..
+ 1627  chmod 755 * -R
+ 1628  cd src
+ 1629  cd sync/
+ 1630  l
+ 1631  ll
+ 1632  les main.go 
+ 1633  less main.go
+ 1634  ll
+ 1635  cd ..
+ 1636  cd ons_sync/
+ 1637  ll
+ 1638  cd bin
+ 1639  ll
+ 1640  cd ..
+ 1641  ls
+ 1642  export GOPATH=$HOME/go:$HOME/sawtooth/sawtooth-core/sdk/go:$HOME/go/projects/ons-sawtooth
+ 1643  ./ons_sync
+ 1644  ll
+ 1645  ./bin/ons_sync 
+ 1646  jobs -p
+ 1647  kill 174
+ 1648  jobs -p
+ 1649  jobs
+ 1650  sudo kill -9 174
+ 1651  jobs
+ 1652  ./bin/ons_sync 
+ 1653  jobs -p
+ 1654  kill -9 324
+ 1655  jobs -p
+ 1656  cd ..
+ 1657  go build -o ./bin/ons_sync
+ 1658  ll
+ 1659  cd ons_sync/
+ 1660  go build -o ./bin/ons_sync
+ 1661  ./bin/ons_sync 
+ 1662  jobs -p
+ 1663  kill -9 486
+ 1664  go build -o ./bin/ons_sync
+ 1665  ./bin/ons_sync 
+ 1666  jobs -p
+ 1667  kill -9 622
+ 1668  go build -o ./bin/ons_sync
+ 1669  ./bin/ons_sync 
+ 1670  jobs
+ 1671  jobs -p
+ 1672  kill -9 759
+ 1673  go build -o ./bin/ons_sync
+ 1674  ./bin/ons_sync 
+ 1675  jobs -p
+ 1676  kill -9 843
+ 1677  go build -o ./bin/ons_sync
+ 1678  ./bin/ons_sync 
+ 1679  go build -o ./bin/ons_sync
+ 1680  ./bin/ons_sync 
+ 1681  git diff
+ 1682  git diff > ~/ons_sync.temp.diff
+ 1683  git pull
+ 1684  git status
+ 1685  cd ..
+ 1686  rm -rf sync
+ 1687  ll
+ 1688  git status
+ 1689  go build -o ./bin/ons_sync
+ 1690  cd ons_sync/
+ 1691  go build -o ./bin/ons_sync
+ 1692  ./bin/ons_sync 
+ 1693  go build -o ./bin/ons_sync
+ 1694  ./bin/ons_sync 
+ 1695  go build -o ./bin/ons_sync
+ 1696  ./bin/ons_sync 
+ 1697  cd ..
+ 1698  cd protos/
+ 1699  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1700  cd ..
+ 1701  cd src/
+ 1702  cd ons
+ 1703  ll
+ 1704  cd ..
+ 1705  cd protos/
+ 1706  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1707  cd ..
+ 1708  cd src/ons
+ 1709  go build -o ./bin/ons
+ 1710  cd ..
+ 1711  cd protos/
+ 1712  protoc --go_out=../src/protobuf/ons_pb2 ons.proto
+ 1713  cd ..
+ 1714  cd src/ons
+ 1715  go build -o ./bin/ons
+ 1716  cd ..
+ 1717  cd stest
+ 1718  cd test
+ 1719  go build -o ./bin/ons_test
+ 1720  cd ..
+ 1721  cd ons
+ 1722  go build -o ./bin/ons
+ 1723  sawtooth state show 211e6b8981040171ce2f8c2a8995b4c0907a4322db032055283e7a87b6a7d27f2fdc0f --url http://198.13.60.39:8080
+ 1724  cd ..
+ 1725  cd test
+ 1726  go build -o ./bin/ons_test
+ 1727  cd ..
+ 1728  ll
+ 1729  cd ons_test
+ 1730  go build -o ./bin/ons_test
+ 1731  cd ..
+ 1732  chmod 755 -R *
+ 1733  cd ons_test
+ 1734  go build -o ./bin/ons_test
+ 1735  ll
+ 1736  cd go
+ 1737  cd projects/
+ 1738  cd ons-sawtooth/
+ 1739  ll
+ 1740  cd src
+ 1741  cd ons
+ 1742  ll
+ 1743  cd bin
+ 1744  ll
+ 1745  sudo ./ons -v --connect=tcp://198.13.60.39:4004
+ 1746  exit
+ 1747  sshv
+ 1748  cd go
+ 1749  cd projects/
+ 1750  cd ons-sawtooth/
+ 1751  cd src
+ 1752  cd ons_test/
+ 1753  cd bin
+ 1754  ./ons_test 
+ 1755  ./ons_test --help
+ 1756  ./ons_test -c http://198.13.60.39:8080 register
+ 1757  ./ons_test -c http://198.13.60.39:8080 register -vv
+ 1758  ./ons_test -c http://198.13.60.39:8080 load_mngr
+ 1759  ./ons_test -c http://198.13.60.39:8080
+ 1760  ./ons_test -c http://198.13.60.39:8080 op_mngr
+ 1761  ./ons_test -c http://198.13.60.39:8080
+ 1762  ./ons_test -c http://198.13.60.39:8080 register -vv
+ 1763  ./ons_test -c http://198.13.60.39:8080 add_sumngr -p 029af316e36cb42178ef332812c56cc585e1a4078e543b75c570b9f676fa01fff7
+ 1764  ./ons_test -c http://198.13.60.39:8080 op_mngr -o 1
+ 1765  ./ons_test -c http://198.13.60.39:8080 add_sumngr -p 029af316e36cb42178ef332812c56cc585e1a4078e543b75c570b9f676fa01fff7
+ 1766  ./ons_test -c http://198.13.60.39:8080 add_sumngr -m 029af316e36cb42178ef332812c56cc585e1a4078e543b75c570b9f676fa01fff7
+ 1767  ./ons_test -c http://198.13.60.39:8080 register -vv
+ 1768  cd ..
+ 1769  cd ons
+ 1770  cat build 
+ 1771  export GOPATH=$HOME/go:$HOME/sawtooth/sawtooth-core/sdk/go:$HOME/go/projects/ons-sawtooth
+ 1772  cd ../ons_test
+ 1773  go build -o ./bin/ons_test 
+ 1774  ./ons_test -c http://198.13.60.39:8080 register -vv
+ 1775  cd bin
+ 1776  ./ons_test -c http://198.13.60.39:8080 register -vv
+ 1777  ./ons_test -c http://198.13.60.39:8080 add -vv
+ 1778  cd ..
+ 1779  cd ons_sync/
+ 1780  go build -o ./bin/ons_sync 
+ 1781  ./ons_sync
+ 1782  ./bin/ons_sync 
+ 1783  go build -o ./bin/ons_sync 
+ 1784  ./bin/ons_sync 
+ 1785  go build -o ./bin/ons_sync 
+ 1786  ./bin/ons_sync 
+ 1787  go build -o ./bin/ons_sync 
+ 1788  ./bin/ons_sync 
+ 1789  go build -o ./bin/ons_sync 
+ 1790  ./bin/ons_sync 
+ 1791  go build -o ./bin/ons_sync 
+ 1792  ./bin/ons_sync 
+ 1793  go build -o ./bin/ons_sync 
+ 1794  ./bin/ons_sync 
+ 1795  cd go
+ 1796  cd projects/
+ 1797  ll
+ 1798  cd ons-sawtooth/
+ 1799  ll
+ 1800  cd src
+ 1801  ll
+ 1802  cd ons_test
+ 1803  cd bin.
+ 1804  cd bin
+ 1805  ./bin/sawtooth_ons_test register_svc -x ./servicetype.xml -vv
+ 1806  ./bin/ons_test register_svc -x ./servicetype.xml -vv
+ 1807  ./ons_test register_svc -x ./servicetype.xml -vv
+ 1808  ./ons_test register_svc -x ../servicetype.xml -vv
+ 1809  sshv
+ 1810  sawtooth state show 211e6b2bfc5685fd974255f50fd93a6a3d8c0954d40bd39528e61f81a1bcd3352fb368 --url http://198.13.16.39:8080
+ 1811  sawtooth state show 211e6b2bfc5685fd974255f50fd93a6a3d8c0954d40bd39528e61f81a1bcd3352fb368 --url http://198.13.60.39:8080
+ 1812  sshv
+ 1813  sawtooth block list --url http://198.13.60.39:8080
+ 1814  sawtooth block show cb4e88ce5852591853632340f13ae64bcefe3eeb44cd4b81718a44ed9f4abf023c55c1bf33f1ff8f0ddab8e582d69e38201316ab373cd2e47e53d7e022c8cb76 --url http://198.13.60.30:8080
+ 1815  sawtooth block show cb4e88ce5852591853632340f13ae64bcefe3eeb44cd4b81718a44ed9f4abf023c55c1bf33f1ff8f0ddab8e582d69e38201316ab373cd2e47e53d7e022c8cb76 --url http://198.13.60.39:8080
+ 1816  sshv
+ 1817  cd src
+ 1818  cd go
+ 1819  cd projects/
+ 1820  ll
+ 1821  cd ons-sawtooth/
+ 1822  ll
+ 1823  cd ons
+ 1824  ll
+ 1825  cd src
+ 1826  cd ons
+ 1827  ll
+ 1828  cd bin
+ 1829  cd ..
+ 1830  cat build
+ 1831  export GOPATH=$HOME/go:$HOME/sawtooth/sawtooth-core/sdk/go:$HOME/go/projects/ons-sawtooth
+ 1832  go build -o ./bin/ons 
+ 1833  ./bin/ons  -vv --connect=tcp://198.13.60.39:4004
+ 1834  go build -o ./bin/ons 
+ 1835  ./bin/ons  -vv --connect=tcp://198.13.60.39:4004
+ 1836  go build -o ./bin/ons 
+ 1837  ./bin/ons  -vv --connect=tcp://198.13.60.39:4004
+ 1838  go build -o ./bin/ons 
+ 1839  ./bin/ons  -vv --connect=tcp://198.13.60.39:4004
+ 1840  go build -o ./bin/ons 
+ 1841  ./bin/ons  -vv --connect=tcp://198.13.60.39:4004
+ 1842  go build -o ./bin/ons 
+ 1843  ./bin/ons  -vv --connect=tcp://198.13.60.39:4004
+ 1844  go build -o ./bin/ons 
+ 1845  ./bin/ons  -vv --connect=tcp://198.13.60.39:4004
+ 1846  ll
+ 1847  cd go
+ 1848  ll
+ 1849  cd projects/
+ 1850  ll
+ 1851  cd ons-sawtooth/
+ 1852  ll
+ 1853  cd ..
+ 1854  cd ons-sawtooth/
+ 1855  ll
+ 1856  cd src
+ 1857  ll
+ 1858  cd ons
+ 1859  ll
+ 1860  cat build
+ 1861  cd ~/sawtooth/sawtooth-core/sdk/go
+ 1862  ll
+ 1863  cd src/
+ 1864  ll
+ 1865  cd sawtooth_sdk/
+ 1866  ll
+ 1867  cd c/
+ 1868  ll
+ 1869  less c11_support.c 
+ 1870  less c11_support.h 
+ 1871  less loader.c 
+ 1872  ll
+ 1873  cd ..
+ 1874  ll
+ 1875  cd ..
+ 1876  cp -rf sawtooth_sdk ~/go/src/github.com/daludaluking/ons-company/
+ 1877  ll
+ 1878  cd ..
+ 1879  cd
+ 1880  cd go
+ 1881  cd sr
+ 1882  cd src
+ 1883  cd github.com/daludaluking/ons-company/
+ 1884  ll
+ 1885  cd sawtooth_sdk/
+ 1886  ll
+ 1887  grep -irnH sawtooth_sdk\/ .
+ 1888  cd ..
+ 1889  ll
+ 1890  cd sawtooth-sdk/
+ 1891  l
+ 1892  cd pro
+ 1893  cd protobuf/
+ 1894  ll
+ 1895  cd batch_pb2/
+ 1896  less batch.pb.go
+ 1897  sshl
+ 1898  cat ~/.bashrc
+ 1899  indal.choi@10.168.178.131
+ 1900  ssh indal.choi@10.168.178.131
+ 1901  go get -u https://github.com/daludaluking/sawtooth-sdk.git
+ 1902  go get -u http://github.com/daludaluking/sawtooth-sdk.git
+ 1903  go get -u github.com/daludaluking/sawtooth-sdk.git
+ 1904  go get -u github.com/daludaluking/sawtooth-sdk
+ 1905  cd go
+ 1906  cd src
+ 1907  cd github.com/
+ 1908  cd daludaluking/
+ 1909  ll
+ 1910  cd sawtooth-sdk/
+ 1911  ll
+ 1912  cp -rf ../ons-company/sawtooth_sdk/* ./
+ 1913  ll
+ 1914  git status
+ 1915  git add .
+ 1916  git status
+ 1917  git commit -m "sawtooth v1.0.4 go sdk"
+ 1918  git status
+ 1919  git push -u origin master
+ 1920  git pull
+ 1921  git push -u origin master
+ 1922  ll
+ 1923  git status
+ 1924  cd ..
+ 1925  ll
+ 1926  rm -rf sawtooth-sdk/
+ 1927  ll
+ 1928  cd ..
+ 1929  cd
+ 1930  go get -u github.com/daludaluking/sawtooth-sdk
+ 1931  cd go
+ 1932  cd src
+ 1933  cd github.com/daludaluking/sawtooth-sdk/
+ 1934  ll
+ 1935  cd messaging/
+ 1936  ll
+ 1937  cd ..
+ 1938  cd sawtooth-sdk/
+ 1939  ll
+ 1940  git status
+ 1941  git add .
+ 1942  git commit -m "fixed wrong path"
+ 1943  git push -u origin master
+ 1944  git log
+ 1945  cd ..
+ 1946  rm -rf sawtooth-sdk/
+ 1947  cd
+ 1948  go get -u github.com/daludaluking/sawtooth-sdk
+ 1949  cd go/
+ 1950  cd src/github.com/daludaluking/sawtooth-sdk/
+ 1951  ll
+ 1952  git status
+ 1953  git add .
+ 1954  git status
+ 1955  git commit -m "fixed unchanged wrong path"
+ 1956  git push -u origin master
+ 1957  cd ..
+ 1958  rm -rf sawtooth-sdk/
+ 1959  cd ..
+ 1960  cd
+ 1961  go get -u github.com/daludaluking/sawtooth-sdk
+ 1962  ll
+ 1963  cd go
+ 1964  cd projects/
+ 1965  ll
+ 1966  cd ons-sawtooth/
+ 1967  ll
+ 1968  git status
+ 1969  git log
+ 1970  sshl
+ 1971  ls
+ 1972  pwd
+ 1973  ls
+ 1974  cd go
+ 1975  ls
+ 1976  cd src
+ 1977  ll
+ 1978  cd github.com/
+ 1979  cd daludaluking/
+ 1980  ll
+ 1981  cd ons-company/
+ 1982  ls
+ 1983  cd app
+ 1984  ls
+ 1985  ll
+ 1986  go run main.go handler.go ons_client.go 
+ 1987  cd ..
+ 1988  chmod 755 -R &
+ 1989  chmod 755 -R *
+ 1990  cd app
+ 1991  go run main.go handler.go ons_client.go 
+ 1992  cat ~/.sawtooth/keys/dal.priv
+ 1993  cat ~/.sawtooth/keys/indal.choi.priv
+ 1994  go run main.go handler.go ons_client.go 
+ 1995  git status
+ 1996  cd ..
+ 1997  cd app/
+ 1998  git status
+ 1999  cd ..
+ 2000  git status
+ 2001  git log
+ 2002  git add .
+ 2003  git status
+ 2004  git commit -m "Removed sawtooth sdk source because of using https://github.com/daludaluking/sawtooth-sdk"
+ 2005  git push -u origin master
+ 2006  cd
+ 2007  go get -u -d github.com/GoogleCloudPlatform/golang-samples/appengine_flexible/datastore
+ 2008  cd go
+ 2009  cd src/github.com/daludaluking/ons-company/
+ 2010  ll
+ 2011  cd app
+ 2012  ll
+ 2013  cp ~/go/projects/ons-sawtooth/src/ons_sync/handler.go ./event.go
+ 2014  chmod 755 -R *
+ 2015  go run main.go handler.go ons_client.go 
+ 2016  go run main.go handler.go ons_client.go event.go
+ 2017  more event.go 
+ 2018  go run main.go handler.go ons_client.go event.go
+ 2019  export GCLOUD_DATASET_ID=ons-company
+ 2020  go run main.go handler.go ons_client.go event.go
+ 2021  chmod 755 -R *
+ 2022  gcloud app deploy
+ 2023  gcloud info
+ 2024  gcloud app deploy
+ 2025  cd ..
+ 2026  cd sawtooth-sdk/
+ 2027  ll
+ 2028  cd signing/
+ 2029  ll
+ 2030  git status
+ 2031  cd ..
+ 2032  git status
+ 2033  cat ~/.ssh/id_rsa.pub 
+ 2034  cd ..
+ 2035  cd ons-company/
+ 2036  ll
+ 2037  cd ons_pb2/
+ 2038  ll
+ 2039  cd ..
+ 2040  cd app/
+ 2041  ll
+ 2042  mkdir bin
+ 2043  go build -o bin/ons-company
+ 2044  ll
+ 2045  cd bin
+ 2046  ll
+ 2047  ll ons-company 
+ 2048  ll
+ 2049  cd ..
+ 2050  ll
+ 2051  cd ..
+ 2052  ll
+ 2053  cd ..
+ 2054  cd sawtooth-sdk/
+ 2055  ll
+ 2056  cd c
+ 2057  ll
+ 2058  cd ..
+ 2059  cd signing/
+ 2060  ll
+ 2061  vim .pem_loader.go.swp 
+ 2062  go build
+ 2063  ll
+ 2064  go build --v
+ 2065  go build -v
+ 2066  go install
+ 2067  ll
+ 2068  git status
+ 2069  go --help
+ 2070  go help build
+ 2071  go build -v
+ 2072  ll
+ 2073  go build pem_loader.go 
+ 2074  ll
+ 2075  git status
+ 2076  go build -v pem_loader.go 
+ 2077  go build *
+ 2078  go install pem_loader.go 
+ 2079  ls
+ 2080  ll
+ 2081  git status
+ 2082  git diff
+ 2083  go build -o test
+ 2084  ll
+ 2085  file test
+ 2086  rm test
+ 2087  go build -v -o test
+ 2088  ll
+ 2089  rm test
+ 2090  ll
+ 2091* go help build | less[A
+ 2092  ll
+ 2093  cd ..
+ 2094  cd ons-company/
+ 2095  ll
+ 2096  cd app/
+ 2097  cd app
+ 2098  ll
+ 2099  rm -rf bin
+ 2100  ll
+ 2101  gcloud app deploy
+ 2102  gccgo
+ 2103  ll
+ 2104  cd ..
+ 2105  cd sawtooth-sdk/
+ 2106  ll
+ 2107  cd c
+ 2108  ll
+ 2109  gcc loader.c 
+ 2110  ll
+ 2111  gcc -lcrypto loader.c 
+ 2112  ll
+ 2113  cd ..
+ 2114  ll
+ 2115  cd signing/
+ 2116  ll
+ 2117  go install *.go
+ 2118  go help install
+ 2119  go install signing
+ 2120  go build -o singing
+ 2121  ll
+ 2122  go install singing 
+ 2123  go install -i singing 
+ 2124  go install ./singing 
+ 2125  ll
+ 2126  cd ..
+ 2127  lll
+ 2128  ll
+ 2129  ccd ..
+ 2130  cd ..
+ 2131  ll
+ 2132  cd ons-company/
+ 2133  ll
+ 2134  cd app/
+ 2135  ll
+ 2136  less ons_client.go 
+ 2137  cp ../../sawtooth-sdk/signing/singing ./
+ 2138  ll
+ 2139  go run *.go
+ 2140  mv singing  ../
+ 2141  go run *.go
+ 2142  cd ..
+ 2143  ll
+ 2144  mv singing ../app
+ 2145  cd ..
+ 2146  ll
+ 2147  mv app ./ons-company/signing
+ 2148  cd ons-company/
+ 2149  ll
+ 2150  cd app
+ 2151  go run *.go
+ 2152  cd ..
+ 2153  ll
+ 2154  mv signing _s
+ 2155  mkdir signing
+ 2156  mv _s ./signing/signing
+ 2157  cd app/
+ 2158  go run *.go
+ 2159  cd ..
+ 2160  cd sawtooth-sdk/
+ 2161  ll
+ 2162  cd signing/
+ 2163  ll
+ 2164  rm singing 
+ 2165  go install
+ 2166  cd ~/go
+ 2167  ll
+ 2168  cd pkg/
+ 2169  ll
+ 2170  cd linux_amd64/
+ 2171  ll
+ 2172  cd github.com/
+ 2173  ll
+ 2174  cd daludaluking/
+ 2175  ll
+ 2176  cd sawtooth-sdk/
+ 2177  ll
+ 2178  cd ..
+ 2179  ll
+ 2180  cd
+ 2181  ll
+ 2182  cd go
+ 2183  cd src/
+ 2184  ll
+ 2185  cd github.com/
+ 2186  ll
+ 2187  cd daludaluking/
+ 2188  ll
+ 2189  cd sawtooth-sdk/
+ 2190  ll
+ 2191  cd ..
+ 2192  ll
+ 2193  cd ons-company/
+ 2194  ll
+ 2195  cd signing/
+ 2196  ll
+ 2197  mv signing 
+ 2198  rm signing 
+ 2199  touch signing
+ 2200  mv signing signing.go
+ 2201  chmod 755 signing.go 
+ 2202  cd ..
+ 2203  cd app
+ 2204  go run *.go
+ 2205  ll
+ 2206  cd ..
+ 2207  ll
+ 2208  rm signing/
+ 2209  rm -rf signing/
+ 2210  git status
+ 2211  git diff
+ 2212  cd ..
+ 2213  ll
+ 2214  cd sawtooth-sdk/
+ 2215  ll
+ 2216  cd signing/
+ 2217  ll
+ 2218  cd ..
+ 2219  git status
+ 2220  cd ..
+ 2221  cd ons-company/
+ 2222  cd app
+ 2223  gcloud beta app gen-config --custom
+ 2224  ll
+ 2225  less app.yaml 
+ 2226  git status
+ 2227  git diff app.yaml
+ 2228  ll
+ 2229  less Dockerfile 
+ 2230  cat Dockerfile 
+ 2231  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2232  go run *.go
+ 2233  ll
+ 2234  git status
+ 2235  git diff
+ 2236  git add .
+ 2237  git commit -m "Testing on kube"
+ 2238  git push -u origin master
+ 2239  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2240  jobs
+ 2241  ll
+ 2242  vim Dockerfile 
+ 2243  fg 1
+ 2244  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2245  jobs
+ 2246  fg 1
+ 2247  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2248  jobs
+ 2249  fg 1
+ 2250  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2251  fg 1
+ 2252  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2253  jobs
+ 2254  fg 1
+ 2255  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2256  fg 1
+ 2257  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2258  fg 1
+ 2259  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2260  jobs
+ 2261  fg 1
+ 2262  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2263  fg 1
+ 2264  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2265  gcloud container clusters create ons-company-cluster
+ 2266  gcloud container clusters create ons-company-cluster --zone asia-northeast1
+ 2267  gcloud container clusters create ons-company-cluster --zone asia-northeast1 | more
+ 2268  gcloud container clusters create ons-company-cluster --zone asia-northeast1 | less
+ 2269  gcloud beta container clusters get-credentials ons-company-cluster --region us-central1 --project ons-company
+ 2270  ll
+ 2271  kubectl
+ 2272  gcloud components install kubectl
+ 2273  sudo apt-get install kubectl
+ 2274  kubectl run ons-compnay --image=gcr.io/ons-company/ons-company-server --port=8080
+ 2275  kubectl run ons-company --image=gcr.io/ons-company/ons-company-server --port=8080
+ 2276  kubectl --help
+ 2277  kubectl help run
+ 2278  kubectl expose deployment ons-company --type="LoadBalancer"
+ 2279  kubectl get service ons-company
+ 2280  kubectl logs
+ 2281  kubectl logs ons-company
+ 2282  kubectl help logs
+ 2283  kubectl logs -c ons-company
+ 2284  kubectl logs -h
+ 2285  cloud beta container clusters update o-company-cluster --logging-service logging.googleapis.com
+ 2286  gcloud beta container clusters update o-company-cluster --logging-service logging.googleapis.com
+ 2287  go run *.go
+ 2288  ll
+ 2289  chmod 755 *
+ 2290  go run *.go
+ 2291  chmod 755 -R /home/indal.choi/go/src/github.com/daludaluking/ons-sawtooth-sdk
+ 2292  go run *.go
+ 2293  git status
+ 2294  git diff
+ 2295  go run *.go
+ 2296  history > history.txt
