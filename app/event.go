@@ -27,6 +27,8 @@ type ONSEventDB interface {
 	DBConnect(url string, db_name string, verbose bool)
 	DBDisconnect()
 	DBUpdateLatestUpdatedBlockInfo(block_num float64, block_id string, prev_block_id string) error
+	DBSaveLatestUpdatedBlockInfo(block_num float64, block_id string, prev_block_id string)
+	DBUpdateSavedLatestUpdatedBlockInfo()
 	DBGetLatestUpdatedBlockInfo(verbose bool) (float64, error)
 	DBGetLatestUpdatedBlock() (float64, string)
 	DBUpdateOrInsert(table_idx int, pk_v string, block_num float64, v interface{}) error
@@ -221,7 +223,7 @@ type ONSEvent struct {
 
 type ONSGS1CodeEvent struct {
 	ons_pb2.GS1CodeData
-	Address string `json:"address"`
+	Address string `json:"address" datastore:",noindex"`
 	BlockNum float64 `json:"block_num"`
 }
 
@@ -257,13 +259,20 @@ func getCurrentLatestONSEvent(h *ONSEventHandler, onsEvent *ONSEvent) *ONSEvent 
 	return g_current_latest_ons_event
 }
 
+var once sync.Once
 func UpdateONSEvent(h *ONSEventHandler, onsEvent *ONSEvent, verbose bool) {
 	if onsEvent == nil {
 		return
 	}
 
+	//UpdateONSEvent가 최초 실행될 때 한번만 호출한다.
+	once.Do(func(){
+		if checkDBInterface(h) == true {
+			h.db.DBSaveLatestUpdatedBlockInfo(onsEvent.BlockNum, onsEvent.BlockId, onsEvent.PreviousBlockId)
+		}
+	})
 	//currentLatestONSEvent := getCurrentLatestONSEvent(onsEvent)
-	_ = getCurrentLatestONSEvent(h, onsEvent)
+	//_ = getCurrentLatestONSEvent(h, onsEvent)
 
 	var latest_updated_block_num float64
 	var latest_updated_block_id string
@@ -277,14 +286,19 @@ func UpdateONSEvent(h *ONSEventHandler, onsEvent *ONSEvent, verbose bool) {
 		latest_updated_block_id = genesis_block_id
 	}
 
-	if onsEvent.PreviousBlockId != genesis_block_id && onsEvent.PreviousBlockId != latest_updated_block_id {
-		log.Printf("Call previous block info\n - current block id : %s\n - previous block id : ", onsEvent.BlockId, onsEvent.PreviousBlockId)
+	if onsEvent.PreviousBlockId != genesis_block_id &&
+		onsEvent.PreviousBlockId != latest_updated_block_id	&&
+		onsEvent.BlockNum > latest_updated_block_num {
+		log.Printf("Call previous block info\n - current block num: %v\n current block id : %s\n - previous block id: %s\n",
+			onsEvent.BlockNum, onsEvent.BlockId, onsEvent.PreviousBlockId)
 		h.GetBlockDeltas(onsEvent.PreviousBlockId)
 	}else{
 		//no more delta.
 		if checkDBInterface(h) == true {
+			h.db.DBUpdateSavedLatestUpdatedBlockInfo()
 			h.db.DBGetLatestUpdatedBlockInfo(verbose)
 		}
+		//여기서 update를 해줘야 하는데....
 	}
 
 	for _, state := range onsEvent.StateChanges {
@@ -323,7 +337,7 @@ func UpdateONSEvent(h *ONSEventHandler, onsEvent *ONSEvent, verbose bool) {
 					log.Printf("unmarshaled state value = %v\n", gs1_code_event)
 				}
 				if checkDBInterface(h) == true {
-					h.db.DBUpdateOrInsert(GS1_CODE, gs1_code_event.Gs1Code, gs1_code_event.BlockNum, gs1_code_event)
+					h.db.DBUpdateOrInsert(GS1_CODE_TABLE, gs1_code_event.Gs1Code, gs1_code_event.BlockNum, gs1_code_event)
 				}else{
 					log.Printf("Update ONS Event :\n %v\n", gs1_code_event)
 				}
@@ -340,7 +354,7 @@ func UpdateONSEvent(h *ONSEventHandler, onsEvent *ONSEvent, verbose bool) {
 					log.Printf("unmarshaled state value = %v\n", service_type_event)
 				}
 				if checkDBInterface(h) == true {
-					h.db.DBUpdateOrInsert(SERVICE_TYPE, service_type_event.Address, service_type_event.BlockNum, service_type_event)
+					h.db.DBUpdateOrInsert(SERVICE_TYPE_TABLE, service_type_event.Address, service_type_event.BlockNum, service_type_event)
 				}else{
 					log.Printf("Update ONS Event :\n %v\n", service_type_event)
 				}

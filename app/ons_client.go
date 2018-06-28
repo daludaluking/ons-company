@@ -88,7 +88,7 @@ func NewONSTransactionHalder(address string, port string, privateKey []byte) *ON
 			Port: port,
 		}
 	}
-
+	log.SetFlags(log.Lshortfile)
 	return iONSHandler
 }
 

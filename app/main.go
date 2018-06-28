@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"net/http"
+	"net/url"
 	"encoding/hex"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -49,14 +50,31 @@ type ONSErrorResponse struct {
 }
 
 var onsServerInfo ONSServerInfo
+//ONSEventDB is interface.
+var onsDB *ONSEventDatastoreDB
 
 func main() {
-	err := CreateDatastoreClient()
+	var err error
+	log.SetFlags(log.Lshortfile)
+
+	onsDB, err = CreateDatastoreClient()
 	if err != nil {
 		log.Printf("Failed to create new client : %v", err)
 		os.Exit(1)
 	}
 
+	log.Printf("CreateDatastoreClient : %#v", onsDB)
+
+	_, err = onsDB.DBInitLatestUpdatedBlockInfo(false)
+	if err != nil {
+		log.Printf("Failed to DBInitLatestUpdatedBlockInfo : %v", err)
+		os.Exit(1)
+	}
+
+	blockNum, blockId :=  onsDB.DBGetLatestUpdatedBlock()
+	log.Printf("DBInitLatestUpdatedBlockInfo : Block num: %v, Block Id: %v, DB Info: %#v", blockNum, blockId, onsDB)
+
+	//return;
 	//일단 private key를 hard coding 해 놓자.
 	//차후에 받는걸로...
 	log.Printf("Start rest api server for ons company : http://:8080")
@@ -81,6 +99,7 @@ func registerHandlers() {
 	r.Handle("/", http.RedirectHandler("/ons", http.StatusFound))
 	r.Methods("POST").Path("/ons/admin").Handler(appHandler(adminRequestHandler))
 	r.Methods("GET").Path("/ons/account").Handler(appHandler(accoutRequestHandler))
+	r.Methods("GET").Path("/ons/data").Handler(appHandler(dataRequestHandler))
 
 	// Respond to App Engine and Compute Engine health checks.
 	// Indicate the server is healthy.
@@ -96,6 +115,31 @@ func handle(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
+}
+
+func dataRequestHandler(w http.ResponseWriter, r *http.Request) *appError {
+	kind := r.FormValue("kind")
+
+	filter, err :=  url.ParseQuery(r.URL.RawQuery)
+	if err != nil {
+		//make empty map.
+		filter = make(map[string][]string)
+	}
+
+	log.Printf("dataRequestHandler: %v, filter(%v) = %#v\n", kind, r.URL.RawQuery, filter)
+	d, err := GetONSData(kind, filter)
+	if err != nil {
+		_ = WriteResponse("dataRequestHandler", ONSErrorResponse{
+			ErrorCode: ERROR_DATASTORE_ACTION,
+			Action: "dataRequestHandler",
+			Message:  "Failed to get ons data",
+			Report: err.Error(),
+		}, w)
+		return nil
+	}
+	log.Printf("dataRequestHandler: %v\n", d)
+	_ = WriteResponseMulti("dataRequestHandler", d, w)
+	return nil
 }
 
 func accoutRequestHandler(w http.ResponseWriter, r *http.Request) *appError {
@@ -215,7 +259,7 @@ func actionStart(action string, w http.ResponseWriter, r *http.Request) error {
 	onsServerInfo.EVAddr = r.FormValue("ev_addr")
 	onsServerInfo.EVPort = r.FormValue("ev_port")
 	var err error
-	onsEventHandler, err = NewONSEventHandler(onsServerInfo.EVAddr+":"+onsServerInfo.EVPort, "/subscriptions", nil, true)
+	onsEventHandler, err = NewONSEventHandler(onsServerInfo.EVAddr+":"+onsServerInfo.EVPort, "/subscriptions", onsDB, true)
 	if err != nil {
 		onsServerInfo.ErrorCode = ERROR_SERVER_ACTION
 		onsServerInfo.Message = "Failed to create ons event handler"
@@ -227,9 +271,7 @@ func actionStart(action string, w http.ResponseWriter, r *http.Request) error {
 		}, w)
 	}
 
-	//key = private key
-	//
-
+	//for test....
 	private_key, _ := hex.DecodeString("ad661cc1acff767e4148ebf74a080a8f54c13abde64062c5cd73d65863e4dd6a")
 	onsTransactionHalder = NewONSTransactionHalder(onsServerInfo.TRAddr, onsServerInfo.TRPort, private_key)
 
@@ -271,6 +313,8 @@ func WriteResponseJson(caller string, result string, w http.ResponseWriter) erro
 }
 
 func WriteResponse(caller string, result interface{}, w http.ResponseWriter) error {
+	return WriteResponseMulti(caller, []interface{}{result}, w)
+	/*
 	response, err := json.MarshalIndent(result, "", "  ")
 	if err != nil {
 		fmt.Fprintf(w, "%s : cannot marshal data into json", caller)
@@ -278,5 +322,19 @@ func WriteResponse(caller string, result interface{}, w http.ResponseWriter) err
 	}
 	w.Header().Set("Content-Type", "application/json")
 	fmt.Fprintf(w, string(response))
+	return nil
+	*/
+}
+
+func WriteResponseMulti(caller string, results []interface{}, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	//for _, i := range results {
+		response, err := json.MarshalIndent(results, "", "  ")
+		if err != nil {
+			fmt.Fprintf(w, "%s : cannot marshal data into json", caller)
+			return err
+		}
+		fmt.Fprintf(w, string(response))
+	//}
 	return nil
 }
