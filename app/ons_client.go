@@ -7,8 +7,10 @@ import (
 	"strconv"
 	"strings"
 	"bytes"
+	"reflect"
 	"crypto/sha512"
 	"encoding/hex"
+	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"github.com/golang/protobuf/proto"
@@ -22,20 +24,10 @@ var namespace = hexdigestbyString("ons")[:6]
 
 const PARAM_GS1CODE = "gs1code"
 const PARAM_ADDRESS = "address"
-
-const action_register = "reg"
-const action_deregister = "dereg"
-const action_add = "add_rec"
-const action_remove = "rm_rec"
-const action_register_svc = "reg_svc"
-const action_deregister_svc = "dereg_svc"
-const action_change_gstate = "chx_gstate"
-const action_change_rstate = "chx_rstate"
-const action_add_mngr = "add_mngr"
-const action_remove_mngr = "rm_mngr"
-const action_add_sumngr = "add_sumngr"
-const action_remove_sumngr = "rm_sumngr"
-const action_op_sumngr = "op_mngr"
+const PARAM_FLAGS = "flags"
+const PARAM_SVC = "service"
+const PARAM_REGEXP = "regexp"
+const PARAM_INDEX = "index"
 
 const (
 	NONE = iota
@@ -44,19 +36,19 @@ const (
 )
 
 const (
-	REGISTER_GS1CODE       = 0
-	DEREGISTER_GS1CODE     = 1
-	ADD_RECORD             = 2
-	REMOVE_RECORD          = 3
-	REGISTER_SERVICETYPE   = 4
-	DEREGISTER_SERVICETYPE = 5
-	CHANGE_GS1CODE_STATE   = 6
-	CHANGE_RECORD_STATE    = 7
-	ADD_MANAGER            = 8
-	REMOVE_MANAGER         = 9
-	ADD_SUMANAGER          = 10
-	REMOVE_SUMANAGER       = 11
-	OP_MANAGER             = 12
+	REGISTER_GS1CODE       = 	ons_pb2.SendONSTransactionPayload_REGISTER_GS1CODE
+	DEREGISTER_GS1CODE     = 	ons_pb2.SendONSTransactionPayload_DEREGISTER_GS1CODE
+	ADD_RECORD             = 	ons_pb2.SendONSTransactionPayload_ADD_RECORD
+	REMOVE_RECORD          = 	ons_pb2.SendONSTransactionPayload_REMOVE_RECORD
+	REGISTER_SERVICETYPE   = 	ons_pb2.SendONSTransactionPayload_REGISTER_SERVICETYPE
+	DEREGISTER_SERVICETYPE = 	ons_pb2.SendONSTransactionPayload_DEREGISTER_SERVICETYPE
+	CHANGE_GS1CODE_STATE   = 	ons_pb2.SendONSTransactionPayload_CHANGE_GS1CODE_STATE
+	CHANGE_RECORD_STATE    = 	ons_pb2.SendONSTransactionPayload_CHANGE_RECORD_STATE
+	ADD_MANAGER            = 	ons_pb2.SendONSTransactionPayload_ADD_MANAGER
+	REMOVE_MANAGER         = 	ons_pb2.SendONSTransactionPayload_REMOVE_MANAGER
+	ADD_SUMANAGER          = 	ons_pb2.SendONSTransactionPayload_ADD_SUMANAGER
+	REMOVE_SUMANAGER       = 	ons_pb2.SendONSTransactionPayload_REMOVE_SUMANAGER
+	OP_MANAGER             = 	ons_pb2.SendONSTransactionPayload_OP_MANAGER
 )
 
 type ONSClient struct {
@@ -92,21 +84,111 @@ func NewONSTransactionHalder(address string, port string, privateKey []byte) *ON
 	return iONSHandler
 }
 
+/*
+type SendONSTransactionPayload struct {
+	TransactionType       SendONSTransactionPayload_ONSTransactionType                    `protobuf:"varint,1,opt,name=transaction_type,json=transactionType,enum=SendONSTransactionPayload_ONSTransactionType" json:"transaction_type,omitempty"`
+	RegisterGs1Code       *SendONSTransactionPayload_RegisterGS1CodeTransactionData       `protobuf:"bytes,2,opt,name=register_gs1_code,json=registerGs1Code" json:"register_gs1_code,omitempty"`
+	DeregisterGs1Code     *SendONSTransactionPayload_DeregisterGS1CodeTransactionData     `protobuf:"bytes,3,opt,name=deregister_gs1_code,json=deregisterGs1Code" json:"deregister_gs1_code,omitempty"`
+	AddRecord             *SendONSTransactionPayload_AddRecordTransactionData             `protobuf:"bytes,4,opt,name=add_record,json=addRecord" json:"add_record,omitempty"`
+	RemoveRecord          *SendONSTransactionPayload_RemoveRecordTransactionData          `protobuf:"bytes,5,opt,name=remove_record,json=removeRecord" json:"remove_record,omitempty"`
+	RegisterServiceType   *SendONSTransactionPayload_RegisterServiceTypeTransactionData   `protobuf:"bytes,6,opt,name=register_service_type,json=registerServiceType" json:"register_service_type,omitempty"`
+	DeregisterServiceType *SendONSTransactionPayload_DeregisterServiceTypeTransactionData `protobuf:"bytes,7,opt,name=deregister_service_type,json=deregisterServiceType" json:"deregister_service_type,omitempty"`
+	ChangeGs1CodeState    *SendONSTransactionPayload_ChangeGS1CodeStateTransactionData    `protobuf:"bytes,8,opt,name=change_gs1_code_state,json=changeGs1CodeState" json:"change_gs1_code_state,omitempty"`
+	ChangeRecordState     *SendONSTransactionPayload_ChangeRecordStateTransactionData     `protobuf:"bytes,9,opt,name=change_record_state,json=changeRecordState" json:"change_record_state,omitempty"`
+	AddManager            *SendONSTransactionPayload_AddManagerTransactionData            `protobuf:"bytes,10,opt,name=add_manager,json=addManager" json:"add_manager,omitempty"`
+	RemoveManager         *SendONSTransactionPayload_RemoveManagerTransactionData         `protobuf:"bytes,11,opt,name=remove_manager,json=removeManager" json:"remove_manager,omitempty"`
+	AddSumanager          *SendONSTransactionPayload_AddSUManagerTransactionData          `protobuf:"bytes,12,opt,name=add_sumanager,json=addSumanager" json:"add_sumanager,omitempty"`
+	RemoveSumanager       *SendONSTransactionPayload_RemoveSUManagerTransactionData       `protobuf:"bytes,13,opt,name=remove_sumanager,json=removeSumanager" json:"remove_sumanager,omitempty"`
+	OpManager             *SendONSTransactionPayload_OPManagerTransactionData             `protobuf:"bytes,14,opt,name=op_manager,json=opManager" json:"op_manager,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{}                                                        `json:"-"`
+	XXX_unrecognized      []byte                                                          `json:"-"`
+	XXX_sizecache         int32                                                           `json:"-"`
+}
+*/
 func MakeTransactionPayload(trType int32, params map[string]interface{}) (*ons_pb2.SendONSTransactionPayload, error){
 	transaction_payload := &ons_pb2.SendONSTransactionPayload {}
-
-	switch trType {
+	transaction_payload.TransactionType = ons_pb2.SendONSTransactionPayload_ONSTransactionType(trType)
+	switch transaction_payload.TransactionType {
 	case REGISTER_GS1CODE:
-		transaction_payload.TransactionType = ons_pb2.SendONSTransactionPayload_REGISTER_GS1CODE
 		transaction_payload.RegisterGs1Code = &ons_pb2.SendONSTransactionPayload_RegisterGS1CodeTransactionData {
 			Gs1Code: params[PARAM_GS1CODE].(string),
 			OwnerId: params[PARAM_ADDRESS].(string),
 		}
+	case DEREGISTER_GS1CODE:
+		transaction_payload.DeregisterGs1Code = &ons_pb2.SendONSTransactionPayload_DeregisterGS1CodeTransactionData {
+			Gs1Code: params[PARAM_GS1CODE].(string),
+		}
+	case ADD_RECORD:
+		transaction_payload.AddRecord = &ons_pb2.SendONSTransactionPayload_AddRecordTransactionData {
+			Gs1Code: params[PARAM_GS1CODE].(string),
+			Record: &ons_pb2.SendONSTransactionPayload_RecordTranactionData {
+				Flags: params[PARAM_FLAGS].(int32),
+				Service: params[PARAM_SVC].(string),
+				Regexp: params[PARAM_REGEXP].(string),
+			},
+		}
+	case REMOVE_RECORD:
+		transaction_payload.RemoveRecord = &ons_pb2.SendONSTransactionPayload_RemoveRecordTransactionData {
+			Gs1Code: params[PARAM_GS1CODE].(string),
+			Index: params[PARAM_GS1CODE].(uint32),
+		}
+	case REGISTER_SERVICETYPE:
+
+	case DEREGISTER_SERVICETYPE:
 	default:
 		return nil, fmt.Errorf("MakeTransactionPayload : invalid transaction type %v", trType)
 	}
 
 	return transaction_payload, nil
+}
+
+func retirveGS1Code(payload *ons_pb2.SendONSTransactionPayload) (string, error) {
+	vals := reflect.ValueOf(payload).Elem()
+	for i := 0; i < vals.NumField(); i++ {
+		valueField := vals.Field(i)
+		//typeField := vals.Type().Field(i)
+		if valueField .Type().Kind().String() == "ptr" && valueField.IsNil() == false {
+			gs1codeField := valueField.Elem().FieldByName("Gs1Code")
+				if gs1codeField.IsValid() {
+					return gs1codeField.String(), nil
+				}
+		}
+	}
+	return "", fmt.Errorf("Field to retrive gs1 code from payload.")
+}
+
+func MakeTransactionPayloadFromJSON(d *json.Decoder, requestor string) (*ons_pb2.SendONSTransactionPayload, string, error) {
+	if d == nil {
+		return nil, "", fmt.Errorf("MakeTransactionPayloadFromJSON: decoder is nil.")
+	}
+	var transaction_payload ons_pb2.SendONSTransactionPayload
+	var address string
+	var err error
+	err = d.Decode(&transaction_payload)
+
+	if err != nil {
+		return nil, "", err
+	}
+
+	if transaction_payload.TransactionType >= ADD_MANAGER && transaction_payload.TransactionType <= OP_MANAGER {
+		address = GetONSManagerAddress()
+	}else if transaction_payload.TransactionType == REGISTER_SERVICETYPE{
+		address, err = MakeAddressByServiceType(requestor, transaction_payload.RegisterServiceType.ServiceType)
+		if err != nil {
+			return nil, "", err
+		}
+	}else if transaction_payload.TransactionType == DEREGISTER_SERVICETYPE {
+		address = transaction_payload.DeregisterServiceType.Address
+	}else{
+		address, err = retirveGS1Code(&transaction_payload)
+		log.Printf("retirveGS1Code : gs1code : %v", address)
+		address = MakeAddressByGS1Code(address)
+		log.Printf("retirveGS1Code : address : %v", address)
+		if err != nil {
+			return nil, "", err
+		}
+	}
+	return &transaction_payload, address, nil
 }
 
 func MakeBatchList(transaction_payload *ons_pb2.SendONSTransactionPayload, signer *signing.Signer, address string) ([]byte, error) {

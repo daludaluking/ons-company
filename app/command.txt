@@ -1,0 +1,41 @@
+servar start:
+POST
+localhost:8080/ons/admin?action=start&tr_addr=198.13.60.39&tr_port=8080&ev_addr=198.13.60.39&ev_port=8080
+
+get ons data:
+GET
+1. gs1 code : "GS1Code"
+http://localhost:8080/ons/data?kind=GS1Code
+2. service type : "ServiceType"
+http://localhost:8080/ons/data?kind=ServiceType
+3. All : "ALL"
+http://localhost:8080/ons/data?kind=ALL
+
+register gs1 code:
+POST
+
+localhost:8080/ons/tx
+content-type : application/json
+{
+	"transaction_type": 0,
+	"register_gs1_code": {
+		"gs1_code": "88000112211113",
+		"owner_id": "27981980ad809aaaaaaa3949808"
+	}
+}
+
+add record:
+POST
+localhost:8080/ons/tx
+content-type : application/json
+{
+        "transaction_type": 2,
+        "add_record": {
+	        "gs1_code": "88000112211113",
+	        "record": {
+	                "flags": 133,
+	                "service": "http://localhost//service.xml",
+	                "regexp": "!^.*$!http://example.com/cgibin/epcis!"
+	        }
+        }
+}

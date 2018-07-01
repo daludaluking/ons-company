@@ -1,0 +1,29 @@
+ 2022  gcloud app deploy
+ 2023  gcloud info
+ 2024  gcloud app deploy
+ 2101  gcloud app deploy
+ 2223  gcloud beta app gen-config --custom
+ 2231  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2239  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2244  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2247  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2250  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2252  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2255  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2257  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2259  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2262  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2264  gcloud container builds submit --tag gcr.io/ons-company/ons-company-server
+ 2265  gcloud container clusters create ons-company-cluster
+ 2266  gcloud container clusters create ons-company-cluster --zone asia-northeast1
+ 2267  gcloud container clusters create ons-company-cluster --zone asia-northeast1 | more
+ 2268  gcloud container clusters create ons-company-cluster --zone asia-northeast1 | less
+ 2269  gcloud beta container clusters get-credentials ons-company-cluster --region us-central1 --project ons-company
+ 2272  gcloud components install kubectl
+ 2286  gcloud beta container clusters update o-company-cluster --logging-service logging.googleapis.com
+ 2299  gcloud info
+ 2300  gcloud auth application-default login
+ 2302  gcloud auth application-default login
+ 2331  history | grep gcloud
+ 2333  history | grep gcloud
+ 2334  history | grep gcloud > gcloud.history.txt

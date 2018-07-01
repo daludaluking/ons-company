@@ -7,9 +7,10 @@ import (
 	"net/http"
 	"net/url"
 	"encoding/hex"
+	"encoding/json"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"encoding/json"
+	//"github.com/daludaluking/ons-sawtooth-sdk/ons_pb2"
 )
 
 type svActionHandler func(string, http.ResponseWriter, *http.Request) error
@@ -38,7 +39,7 @@ type ONSServerInfo struct {
 const (
 	ERROR_NONE = iota
 	ERROR_SERVER_ACTION
-	ERROR_ADMIN_ACTION
+	ERROR_TX_ACTION
 	ERROR_DATASTORE_ACTION
 )
 
@@ -97,6 +98,8 @@ func registerHandlers() {
 	// See http://www.gorillatoolkit.org/pkg/mux
 	r := mux.NewRouter()
 	r.Handle("/", http.RedirectHandler("/ons", http.StatusFound))
+	//r.Methods("POST").Path("/ons/tx").Handler(appHandler(txRequestHandler))
+	r.Methods("POST").Path("/ons/tx").Handler(appHandler(txRequestHandler))
 	r.Methods("POST").Path("/ons/admin").Handler(appHandler(adminRequestHandler))
 	r.Methods("GET").Path("/ons/account").Handler(appHandler(accoutRequestHandler))
 	r.Methods("GET").Path("/ons/data").Handler(appHandler(dataRequestHandler))
@@ -185,34 +188,57 @@ func accoutRequestHandler(w http.ResponseWriter, r *http.Request) *appError {
 	}, w)
 	return nil
 }
-
-func adminRequestHandler(w http.ResponseWriter, r *http.Request) *appError {
-	action := r.FormValue("action")
-	if CheckAction(action) == false {
-		if CheckServerAction(action) == true {
-			_ = ServerProcessAction(action, w, r)
-			return nil
-		}
-		err := fmt.Errorf("admin: %v action doesn't exist in action list:", action)
-		return appErrorf(err, "adminRequestHandler : CheckAction : %v", err)
-	}
-
-	if onsTransactionHalder == nil || onsEventHandler == nil {
-		_ = WriteResponse(action, ONSErrorResponse{
-			ErrorCode: ERROR_ADMIN_ACTION,
-			Action: action,
-			Message:  "First of all, please start ons company",
+/*
+func txRequestHandler(w http.ResponseWriter, r *http.Request) *appError {
+	log.Printf("%#v\n", r)
+	contentType := r.Header.Get("Content-type")
+	if contentType != "application/json" {
+		_ = WriteResponse("txRequestHandler", ONSErrorResponse{
+			ErrorCode: ERROR_TX_ACTION,
+			Action: "txRequestHandler",
+			Message:  "transaction data only supports the application/json content type.",
 			Report: string(""),
 		}, w)
 		return nil
 	}
 
-	err := AdminProcessAction(onsTransactionHalder, action, w, r)
+	decoder := json.NewDecoder(r.Body)
+	log.Println(decoder)
+	var t ons_pb2.SendONSTransactionPayload
+	err := decoder.Decode(&t)
 
 	if err != nil {
-		return appErrorf(err, "adminRequestHandler : AdminProcessAction : %v", err)
+		panic(err)
+	}
+
+	log.Printf("%v\n", t.RegisterGs1Code.Gs1Code)
+
+	_ = WriteResponse("txRequestHandler", ONSErrorResponse{
+		ErrorCode: ERROR_TX_ACTION,
+		Action: "txRequestHandler",
+		Message:  "Not implemented",
+		Report: string(""),
+	}, w)
+	return nil
+}
+*/
+func txRequestHandler(w http.ResponseWriter, r *http.Request) *appError {
+	action := r.FormValue("action")
+	err := TxProcessAction(onsTransactionHalder, action, w, r)
+	if err != nil {
+		return appErrorf(err, "txRequestHandler : AdminProcessAction : %v", err)
 	}
 	return nil
+}
+
+func adminRequestHandler(w http.ResponseWriter, r *http.Request) *appError {
+	action := r.FormValue("action")
+	if CheckAdminAction(action) == true {
+		_ = ServerProcessAction(action, w, r)
+		return nil
+	}
+	err := fmt.Errorf("admin: %v action doesn't exist in action list:", action)
+	return appErrorf(err, "adminRequestHandler : CheckAction : %v", err)
 }
 
 // http://blog.golang.org/error-handling-and-go
@@ -240,7 +266,7 @@ func appErrorf(err error, format string, v ...interface{}) *appError {
 	}
 }
 
-func CheckServerAction(action string) bool {
+func CheckAdminAction(action string) bool {
 	_, ok := sv_action_value[action]
 	return ok
 }
@@ -314,27 +340,15 @@ func WriteResponseJson(caller string, result string, w http.ResponseWriter) erro
 
 func WriteResponse(caller string, result interface{}, w http.ResponseWriter) error {
 	return WriteResponseMulti(caller, []interface{}{result}, w)
-	/*
-	response, err := json.MarshalIndent(result, "", "  ")
-	if err != nil {
-		fmt.Fprintf(w, "%s : cannot marshal data into json", caller)
-		return err
-	}
-	w.Header().Set("Content-Type", "application/json")
-	fmt.Fprintf(w, string(response))
-	return nil
-	*/
 }
 
 func WriteResponseMulti(caller string, results []interface{}, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
-	//for _, i := range results {
-		response, err := json.MarshalIndent(results, "", "  ")
-		if err != nil {
-			fmt.Fprintf(w, "%s : cannot marshal data into json", caller)
-			return err
-		}
-		fmt.Fprintf(w, string(response))
-	//}
+	response, err := json.MarshalIndent(results, "", "  ")
+	if err != nil {
+		fmt.Fprintf(w, "%s : cannot marshal data into json", caller)
+		return err
+	}
+	fmt.Fprintf(w, string(response))
 	return nil
 }

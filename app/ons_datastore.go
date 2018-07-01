@@ -254,6 +254,9 @@ func CreateDatastoreClient() (*ONSEventDatastoreDB, error){
 	var err error
 	ctx := context.Background()
 	projectID := os.Getenv("GCLOUD_DATASET_ID")
+	if projectID == "" {
+		projectID = "ons-company"
+	}
 	dsClient, err = ds.NewClient(ctx, projectID)
 
 	log.SetFlags(log.Lshortfile)
@@ -356,7 +359,6 @@ func GetONSData(kind string, filter map[string][]string) ([]interface{}, error) 
 	if dsClient == nil {
 		return nil, fmt.Errorf("GetONSData: Datastore client isn't exist");
 	}
-
 
 	var onsData []interface{}
 	var err error
